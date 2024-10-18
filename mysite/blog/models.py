@@ -4,6 +4,10 @@ from django.utils import timezone
 # Create your models here.
 
 class Post(models.Model):
+    class Status(models.TextChoices):
+        # Add status of a post such as draft, published
+        DRAFT = "DF", "Draft"
+        PUBLISHED = "PB", "Published"
     # Field for the post title. It translates into VARCHAR
     title = models.Charfield(max_length = 250)
     # Short label
