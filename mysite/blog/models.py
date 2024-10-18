@@ -10,10 +10,10 @@ class Post(models.Model):
         DRAFT = "DF", "Draft"
         PUBLISHED = "PB", "Published"
     # Field for the post title. It translates into VARCHAR
-    title = models.CharField(max_length = 250)
+    title = models.CharField(max_length=250)
     
     # Short label
-    slug = models.SlugField(max_length = 250)
+    slug = models.SlugField(max_length=250)
     
     # Relationship betweeen users and posts
     author = models.ForeignKey(
@@ -36,23 +36,24 @@ class Post(models.Model):
     
     # Store when the post was updated.
     updated = models.DateTimeField(auto_now=True)
+    
     status = models.CharField(
         max_length=2,
         choices=Status,
         default=Status.DRAFT
     )
     
-class Meta:
-    # This class defines metadata for the model.
-    # Ordering is used to sort results by publish field.
-    ordering = ['-publish']
-    # Define database indexes for the model
-    indexes = [
-        models.Index(fields=['-publish']),
-    ]
+    class Meta:
+        # This class defines metadata for the model.
+        # Ordering is used to sort results by publish field.
+        ordering = ["-publish"]
+        # Define database indexes for the model
+        indexes = [
+            models.Index(fields=["-publish"]),
+        ]
     
-# Default python method to return a string with human-readable
-# representation of the object. It will be used for displaying 
-# the name of the object in places, such as, django admin site
-def __str__(self):
-    return self.title
+    # Default python method to return a string with human-readable
+    # representation of the object. It will be used for displaying 
+    # the name of the object in places, such as, django admin site
+    def __str__(self):
+        return self.title
