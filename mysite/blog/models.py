@@ -23,6 +23,10 @@ class Meta:
     # This class defines metadata for the model.
     # Ordering is used to sort results by publish field.
     ordering = ['-publish']
+    # Define database indexes for the model
+    indexes = [
+        models.Index(fields=['-publish']),
+    ]
 # Default python method to return a string with human-readable
 # representation of the object. It will be used for displaying 
 # the name of the object in places, such as, django admin site
