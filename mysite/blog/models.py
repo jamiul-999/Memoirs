@@ -36,6 +36,11 @@ class Post(models.Model):
     
     # Store when the post was updated.
     updated = models.DateTimeField(auto_now=True)
+    status = models.CharField(
+        max_length=2,
+        choices=Status,
+        default=Status.DRAFT
+    )
     
 class Meta:
     # This class defines metadata for the model.
