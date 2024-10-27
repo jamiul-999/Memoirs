@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 # Create your models here.
@@ -65,3 +66,9 @@ class Post(models.Model):
     # the name of the object in places, such as, django admin site
     def __str__(self):
         return self.title
+    
+    def get_aboslute_url(self):
+        return reverse(
+            'blog:post_detail',
+            args=[self.id]
+        )
