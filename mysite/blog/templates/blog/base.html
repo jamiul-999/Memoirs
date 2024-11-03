@@ -22,6 +22,15 @@
             </p>
             <h3>Latest Posts</h3>
             {% show_latest_posts 3 %}
+            <h3>Most commented posts</h3>
+            {% get_most_commented_posts as get_most_commented_posts %}
+            <ul>
+                {% for post in get_most_commented_posts %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </body>
     </html>
